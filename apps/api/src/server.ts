@@ -1,16 +1,21 @@
-import { createServer } from "node:http";
+import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { health } from "./health.js";
 
-export function createApiServer() {
-  return createServer((request, response) => {
+export type RequestHandler = (request: IncomingMessage, response: ServerResponse) => Promise<boolean> | boolean;
+
+export function createApiServer(handler?: RequestHandler) {
+  return createServer(async (request, response) => {
     response.setHeader("content-type", "application/json; charset=utf-8");
     if (request.method === "GET" && request.url === "/health") {
       response.statusCode = 200;
       response.end(JSON.stringify(health()));
       return;
     }
-    response.statusCode = 404;
-    response.end(JSON.stringify({ code: "NOT_FOUND", message: "Route not found" }));
+    if (handler && await handler(request, response)) return;
+    if (!response.writableEnded) {
+      response.statusCode = 404;
+      response.end(JSON.stringify({ code: "NOT_FOUND", message: "Route not found" }));
+    }
   });
 }
 
