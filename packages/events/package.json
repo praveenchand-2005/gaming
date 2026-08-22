@@ -1,0 +1,9 @@
+{
+  "name": "@commerce-os/events",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {"typecheck": "tsc --noEmit"},
+  "dependencies": {"@commerce-os/domain": "workspace:*"},
+  "devDependencies": {"typescript": "^5.8.3"}
+}
