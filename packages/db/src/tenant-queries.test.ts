@@ -9,6 +9,6 @@ describe("tenant-scoped database queries", () => {
 
   it("uses parameterized values", () => {
     const query = "SELECT ... WHERE tenant_id=$1";
-    expect(query).not.toContain("'" + " + tenantId + "'");
+    expect(query).not.toContain("' + tenantId + '");
   });
 });
