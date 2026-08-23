@@ -1,5 +1,5 @@
 import type { Pool } from "pg";
-import type { ProposedAction } from "@commerce-os/automation/action-policy.js";
+import type { ProposedAction } from "@commerce-os/contracts";
 
 export class PostgresActionRepository {
   constructor(private readonly pool: Pool) {}
