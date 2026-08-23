@@ -10,5 +10,5 @@
     "./inventory.js": { "types": "./dist/inventory.d.ts", "import": "./dist/inventory.js" }
   },
   "scripts": { "build": "tsc -p tsconfig.build.json", "typecheck": "tsc --noEmit" },
-  "devDependencies": { "typescript": "^5.8.3" }
+  "devDependencies": { "typescript": "^5.8.3", "vitest": "^3.2.4" }
 }
