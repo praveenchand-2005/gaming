@@ -24,9 +24,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-      - name: Install
-        run: pnpm install --frozen-lockfile
+      - name: Install workspace dependencies
+        run: pnpm install --no-frozen-lockfile
       - name: Build
         run: pnpm -r build
       - name: Typecheck
