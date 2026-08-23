@@ -8,7 +8,7 @@ describe("CommerceService", () => {
     const repository = new InMemoryCommerceRepository();
     const events = new InMemoryEventBus();
     const published: string[] = [];
-    events.subscribe({ eventType: "product.created", async () => { published.push("product.created"); } });
+    events.on("product.created", async () => { published.push("product.created"); });
     const service = new CommerceService(repository, events);
 
     const product = await service.createProduct({
@@ -23,7 +23,7 @@ describe("CommerceService", () => {
     const repository = new InMemoryCommerceRepository();
     const events = new InMemoryEventBus();
     const published: string[] = [];
-    events.subscribe({ eventType: "order.created", async () => { published.push("order.created"); } });
+    events.on("order.created", async () => { published.push("order.created"); });
     const service = new CommerceService(repository, events);
 
     const order = await service.createOrder({
