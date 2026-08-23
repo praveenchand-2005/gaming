@@ -2,7 +2,11 @@ import type { DomainEvent } from "@commerce-os/domain";
 
 export type EventHandler<T = unknown> = (event: DomainEvent<T>) => Promise<void>;
 
-export class InMemoryEventBus {
+export interface EventBus {
+  publish<T>(event: DomainEvent<T>): Promise<void>;
+}
+
+export class InMemoryEventBus implements EventBus {
   private readonly handlers = new Map<string, EventHandler[]>();
 
   on<T>(eventType: string, handler: EventHandler<T>): void {
