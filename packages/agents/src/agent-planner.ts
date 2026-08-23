@@ -1,5 +1,5 @@
 import { agents, type AgentId } from "./agent-contract.js";
-import type { ProposedAction } from "@commerce-os/automation/action-policy.js";
+import type { ProposedAction } from "@commerce-os/contracts";
 
 export interface AgentPlan { agentId: AgentId; objective: string; actions: ProposedAction[]; requiresHumanApproval: boolean; }
 
