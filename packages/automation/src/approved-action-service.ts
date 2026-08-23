@@ -1,12 +1,12 @@
+import type { AgentId, ProposedAction } from "@commerce-os/contracts";
 import type { TenantContext } from "@commerce-os/auth/tenant-context.js";
-import type { ProposedAction } from "./action-policy.js";
 import type { ActionRepository } from "./action-repository.js";
-import type { AgentExecutionGateway } from "@commerce-os/agents/execution-gateway.js";
+import type { ExecutionGateway } from "./execution-gateway.js";
 
 export class ApprovedActionService {
-  constructor(private readonly actions: ActionRepository, private readonly gateway: AgentExecutionGateway) {}
+  constructor(private readonly actions: ActionRepository, private readonly gateway: ExecutionGateway) {}
 
-  async approveAndExecute(context: TenantContext, actionId: string, agentId: "sales"|"inventory"|"marketing"|"finance"|"support") {
+  async approveAndExecute(context: TenantContext, actionId: string, agentId: AgentId) {
     const action = await this.actions.get(context.tenantId, actionId);
     if (!action) throw new Error("Action not found");
     if (action.tenantId !== context.tenantId) throw new Error("Tenant mismatch");
