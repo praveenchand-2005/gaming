@@ -1,5 +1,4 @@
 import type { Pool } from "pg";
-import type { ReturnType } from "node:module";
 
 export class PostgresCustomerRepository {
   constructor(private readonly pool: Pool) {}
