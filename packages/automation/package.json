@@ -4,6 +4,6 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": { "build": "tsc -p tsconfig.json", "test": "vitest run", "typecheck": "tsc -p tsconfig.json --noEmit" },
-  "dependencies": { "@commerce-os/auth": "workspace:*", "@commerce-os/contracts": "workspace:*", "@commerce-os/db": "workspace:*" },
-  "devDependencies": { "typescript": "^5.8.3", "vitest": "^3.2.4" }
+  "dependencies": { "@commerce-os/contracts": "workspace:*", "@commerce-os/db": "workspace:*", "pg": "^8.16.3" },
+  "devDependencies": { "@types/pg": "^8.15.5", "typescript": "^5.8.3", "vitest": "^3.2.4" }
 }
