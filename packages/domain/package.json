@@ -7,7 +7,11 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
-    "./inventory.js": { "types": "./dist/inventory.d.ts", "import": "./dist/inventory.js" }
+    "./cart.js": { "types": "./dist/cart.d.ts", "import": "./dist/cart.js" },
+    "./inventory.js": { "types": "./dist/inventory.d.ts", "import": "./dist/inventory.js" },
+    "./order.js": { "types": "./dist/order.d.ts", "import": "./dist/order.js" },
+    "./product.js": { "types": "./dist/product.d.ts", "import": "./dist/product.js" },
+    "./variant.js": { "types": "./dist/variant.d.ts", "import": "./dist/variant.js" }
   },
   "scripts": { "build": "tsc -p tsconfig.build.json", "typecheck": "tsc --noEmit" },
   "devDependencies": { "typescript": "^5.8.3", "vitest": "^3.2.4" }
