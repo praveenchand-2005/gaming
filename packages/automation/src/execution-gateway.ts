@@ -1,5 +1,4 @@
-import type { AgentId, ProposedAction } from "@commerce-os/contracts";
-import type { TenantContext } from "@commerce-os/auth/tenant-context.js";
+import type { AgentId, ProposedAction, TenantContext } from "@commerce-os/contracts";
 
 export interface ExecutionGateway {
   execute(context: TenantContext, action: ProposedAction, agentId: AgentId): Promise<unknown>;
