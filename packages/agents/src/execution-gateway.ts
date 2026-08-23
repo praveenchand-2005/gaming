@@ -1,5 +1,4 @@
-import type { ProposedAction, AgentId } from "@commerce-os/contracts";
-import type { TenantContext } from "@commerce-os/auth/tenant-context.js";
+import type { ProposedAction, AgentId, TenantContext } from "@commerce-os/contracts";
 import { AgentToolRunner } from "./tool-runner.js";
 
 export class AgentExecutionGateway {
