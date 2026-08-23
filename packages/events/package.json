@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": {"typecheck": "tsc --noEmit"},
-  "dependencies": {"@commerce-os/domain": "workspace:*"},
-  "devDependencies": {"typescript": "^5.8.3"}
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "scripts": { "build": "tsc -p tsconfig.build.json", "typecheck": "tsc --noEmit" },
+  "dependencies": { "@commerce-os/domain": "workspace:*" },
+  "devDependencies": { "typescript": "^5.8.3" }
 }
