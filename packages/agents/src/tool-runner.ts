@@ -1,5 +1,5 @@
 import { agents, type AgentId } from "./agent-contract.js";
-import type { TenantContext } from "@commerce-os/auth/tenant-context.js";
+import type { TenantContext } from "@commerce-os/contracts";
 
 export interface ToolExecution { agentId: AgentId; toolName: string; tenantId: string; input: Record<string, unknown>; }
 export type ToolHandler = (input: Record<string, unknown>) => Promise<unknown>;
