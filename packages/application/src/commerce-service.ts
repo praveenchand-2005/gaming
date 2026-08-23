@@ -13,11 +13,14 @@ export class CommerceService {
     const product = buildProduct(command);
     await this.repository.saveProduct(product);
     await this.events.publish({
-      id: crypto.randomUUID(), tenantId: product.tenantId,
-      idempotencyKey: `product.created:${product.id}`,
+      id: crypto.randomUUID(),
+      tenantId: product.tenantId,
+      aggregateType: "product",
+      aggregateId: product.id,
+      type: "product.created",
+      version: 1,
       occurredAt: product.createdAt,
-      event: { type: "product.created", tenantId: product.tenantId, aggregateId: product.id,
-        occurredAt: product.createdAt, payload: { storeId: product.storeId, title: product.title, handle: product.handle, status: product.status } },
+      payload: { storeId: product.storeId, title: product.title, handle: product.handle, status: product.status },
     });
     return product;
   }
@@ -26,11 +29,14 @@ export class CommerceService {
     const order = buildOrder(command);
     await this.repository.saveOrder(order);
     await this.events.publish({
-      id: crypto.randomUUID(), tenantId: order.tenantId,
-      idempotencyKey: `order.created:${order.id}`,
+      id: crypto.randomUUID(),
+      tenantId: order.tenantId,
+      aggregateType: "order",
+      aggregateId: order.id,
+      type: "order.created",
+      version: 1,
       occurredAt: order.occurredAt,
-      event: { type: "order.created", tenantId: order.tenantId, aggregateId: order.id,
-        occurredAt: order.occurredAt, payload: { storeId: order.storeId, totalMinor: order.totalMinor, currency: order.currency } },
+      payload: { storeId: order.storeId, totalMinor: order.totalMinor, currency: order.currency },
     });
     return order;
   }
