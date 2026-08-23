@@ -1,8 +1,7 @@
 import { audit, type ActionAudit } from "./audit-log.js";
 import type { ActionRepository } from "./action-repository.js";
 import type { ExecutionGateway } from "./execution-gateway.js";
-import type { AgentId } from "@commerce-os/contracts";
-import type { TenantContext } from "@commerce-os/auth/tenant-context.js";
+import type { AgentId, TenantContext } from "@commerce-os/contracts";
 
 export interface AuditWriter { append(record: ActionAudit): Promise<void>; }
 
