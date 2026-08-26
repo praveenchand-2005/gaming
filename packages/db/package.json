@@ -6,12 +6,16 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./in-memory-repository.js": {
       "types": "./dist/in-memory-repository.d.ts",
       "import": "./dist/in-memory-repository.js"
     }
   },
-  "scripts": { "typecheck": "tsc --noEmit" },
+  "scripts": { "build": "tsc -p tsconfig.build.json", "typecheck": "tsc --noEmit" },
   "dependencies": {
     "@commerce-os/contracts": "workspace:*",
     "@commerce-os/domain": "workspace:*",
