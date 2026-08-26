@@ -18,5 +18,10 @@ export function createApiClient(options: ApiClientOptions) {
       if (!response.ok) throw new Error(`Order request failed: ${response.status}`);
       return response.json();
     },
+    async approveAction(actionId: string, agentId: "sales" | "inventory" | "marketing" | "finance" | "support") {
+      const response = await fetch(`${options.baseUrl}/actions/${encodeURIComponent(actionId)}/approve`, { method: "POST", headers, body: JSON.stringify({ agentId }) });
+      if (!response.ok) throw new Error(`Action approval failed: ${response.status}`);
+      return response.json();
+    },
   };
 }
